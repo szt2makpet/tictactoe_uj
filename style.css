@@ -30,7 +30,7 @@ body {
     font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-   
+   border-radius: 30%;
 }
 .cell:hover{
     background: #03e9f4;
