@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tabla = document.getElementById('board');
-    const cellak = document.querySelectorAll('.cell');
+    const mezoak = document.querySelectorAll('.mezo');
     const status = document.getElementById('status');
     const ujrainditasGomb = document.getElementById('restartButton');
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const ellenorizDontetlent = () => {
-        return jatekTabla.every(cella => cella !== '');
+        return jatekTabla.every(mezoa => mezoa !== '');
     };
 
     const befejezJatekot = (nyertes) => {
@@ -38,25 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const veletlenszeruLepes = () => {
-        const uresCellak = jatekTabla.reduce((acc, cella, index) => {
-            if (cella === '') {
+        const uresmezoak = jatekTabla.reduce((acc, mezoa, index) => {
+            if (mezoa === '') {
                 acc.push(index);
             }
             return acc;
         }, []);
-        const veletlenszeruIndex = Math.floor(Math.random() * uresCellak.length);
-        return uresCellak[veletlenszeruIndex];
+        const veletlenszeruIndex = Math.floor(Math.random() * uresmezoak.length);
+        return uresmezoak[veletlenszeruIndex];
     };
 
     const gepiLepes = () => {
         for (const minta of nyeroMintak) {
             const [a, b, c] = minta;
             const sor = [jatekTabla[a], jatekTabla[b], jatekTabla[c]];
-            const jatekosSorban = sor.filter(cella => cella === 'X').length;
-            const gepSorban = sor.filter(cella => cella === 'O').length;
+            const jatekosSorban = sor.filter(mezoa => mezoa === 'X').length;
+            const gepSorban = sor.filter(mezoa => mezoa === 'O').length;
 
             if (gepSorban === 2 && jatekosSorban === 0) {
-                const index = sor.findIndex(cella => cella === '');
+                const index = sor.findIndex(mezoa => mezoa === '');
                 return minta[index];
             }
         }
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const minta of nyeroMintak) {
             const [a, b, c] = minta;
             const sor = [jatekTabla[a], jatekTabla[b], jatekTabla[c]];
-            const jatekosSorban = sor.filter(cella => cella === 'X').length;
-            const gepSorban = sor.filter(cella => cella === 'O').length;
+            const jatekosSorban = sor.filter(mezoa => mezoa === 'X').length;
+            const gepSorban = sor.filter(mezoa => mezoa === 'O').length;
 
             if (jatekosSorban === 2 && gepSorban === 0) {
-                const index = sor.findIndex(cella => cella === '');
+                const index = sor.findIndex(mezoa => mezoa === '');
                 return minta[index];
             }
         }
@@ -76,13 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return veletlenszeruLepes();
     };
 
-    const kezelCellaKattintas = (index) => {
+    const kezelmezoaKattintas = (index) => {
         if (!jatekAktiv || jatekTabla[index] !== '') {
             return;
         }
 
         jatekTabla[index] = aktualisJatekos;
-        cellak[index].textContent = aktualisJatekos;
+        mezoak[index].textContent = aktualisJatekos;
 
         const nyertes = ellenorizNyertest();
         if (nyertes) {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (aktualisJatekos === 'O') {
                 setTimeout(() => {
                     const gepLepesIndex = gepiLepes();
-                    kezelCellaKattintas(gepLepesIndex);
+                    kezelmezoaKattintas(gepLepesIndex);
                 },);
             }
         }
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
         aktualisJatekos = 'X';
         status.textContent = `${aktualisJatekos} következik`;
 
-        cellak.forEach((cella) => {
-            cella.textContent = '';
+        mezoak.forEach((mezoa) => {
+            mezoa.textContent = '';
         });
     };
 
-    cellak.forEach((cella, index) => {
-        cella.addEventListener('click', () => kezelCellaKattintas(index));
+    mezoak.forEach((mezoa, index) => {
+        mezoa.addEventListener('click', () => kezelmezoaKattintas(index));
     });
 
     ujrainditasGomb.addEventListener('click', ujraInditJatekot);

@@ -22,7 +22,7 @@ body {
     margin-top: 20px;
 }
 
-.cell{
+.mezo{
     width: 100px;
     height: 100px;
     border: 1px solid #61dafb;
@@ -36,7 +36,7 @@ body {
    font-family: 'Agbalumo';
    font-size: 50px;
 }
-.cell:hover{
+.mezo:hover{
     background: #03e9f4;
     color: #050801;
     box-shadow: 0 0 5px #03e9f4,
@@ -45,17 +45,17 @@ body {
                 0 0 200px #03e9f4;
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
 }
-.cell:nth-child(1){
+.mezo:nth-child(1){
     filter: hue-rotate(270deg);
 }
-.cell:nth-child(2){
+.mezo:nth-child(2){
     filter: hue-rotate(110deg);
 }
-.cell span{
+.mezo span{
     position: absolute;
     display: block;
 }
-.cell span:nth-child(1){
+.mezo span:nth-child(1){
     top: 0;
     left: 0;
     width: 100%;
@@ -71,7 +71,7 @@ body {
         left: 100%;
     }
 }
-.cell span:nth-child(2){
+.mezo span:nth-child(2){
     top: -100%;
     right: 0;
     width: 2px;
@@ -88,7 +88,7 @@ body {
         top: 100%;
     }
 }
-.cell span:nth-child(3){
+.mezo span:nth-child(3){
     bottom: 0;
     right: 0;
     width: 100%;
@@ -107,7 +107,7 @@ body {
 }
 
 
-.cell span:nth-child(4){
+.mezo span:nth-child(4){
     bottom: -100%;
     left: 0;
     width: 2px;
